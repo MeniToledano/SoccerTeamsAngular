@@ -8,13 +8,17 @@ import { HttpClientModule} from "@angular/common/http";
 import { TeamsListComponent } from './teams-list/teams-list.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import {StorageManagerService} from "./storage-manager.service";
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { PaginationComponent } from './pagination/pagination.component';
+import { LoaderComponent } from './loader/loader.component';
+import { TeamsTableComponent } from './teams-table/teams-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TeamsListComponent,
-    NavBarComponent
+    PaginationComponent,
+    LoaderComponent,
+    TeamsTableComponent
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,9 @@
-export class ServerResponseModel {
+export interface ServerResponseModel {
   count: number;
   filters: {};
   teams: TeamModel[];
 }
-export class TeamModel {
+export interface TeamModel {
   id: number;
   crestUrl: string;
   founded: number;

@@ -1,0 +1,22 @@
+<table class="table table-hover table-dark" id="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Team's Name</th>
+    <th scope="col">Year Founded</th>
+    <th scope="col">Crest</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr (click)="onClickTeam(team.id)"
+      *ngFor="let team of viewTeams; let i = index"
+      [ngClass]="{ 'table-success' : isFavorite[team.id]}">
+    <th scope="row">{{(this.viewTeams.indexOf(team) + 1) + currentPage * 10 }}</th>
+    <td class="w-10 p-3">{{team.name}}</td>
+    <td class="w-25 p-3">{{team.founded}}</td>
+    <td class="w-25 p-3">
+      <img alt="{{team.name + ' - image'}}" class="image" src="{{team.crestUrl}}">
+    </td>
+  </tr>
+  </tbody>
+</table>

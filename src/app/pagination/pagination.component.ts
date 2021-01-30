@@ -1,11 +1,11 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
-  selector: 'app-nav-bar',
-  templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.css']
+  selector: 'app-pagination',
+  templateUrl: './pagination.component.html',
+  styleUrls: ['./pagination.component.css']
 })
-export class NavBarComponent implements OnInit {
+export class PaginationComponent implements OnInit {
   @Input() numberOfPages: number;
   @Output() onChangePage: EventEmitter<number> = new EventEmitter<number>();
   currentPageNumber:number = 0;

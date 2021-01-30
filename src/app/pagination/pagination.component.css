@@ -1,7 +1,7 @@
-nav ul li a{
+.page-link{
   color: blanchedalmond;
   background-color: #212529;
 }
-nav ul li a:hover {
+.page-link:hover {
   background-color: gray;
 }

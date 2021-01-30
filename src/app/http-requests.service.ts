@@ -9,19 +9,18 @@ import {TeamClientModel} from "./models/teamClientModel";
   providedIn: 'root'
 })
 export class HttpRequestsService {
-  BASE_URL = 'https://api.football-data.org/v2/teams';
-  tempUrlString: string;
+  private readonly BASE_URL = 'https://api.football-data.org/v2/teams';
+  private headers = {'X-Auth-Token': '168c87a5b0ba45239ceee596952d3d6c'};
 
   constructor(private http: HttpClient) {
   }
 
   getTeamsData(): Observable<TeamClientModel[]> {
-    this.tempUrlString = this.BASE_URL;
-    return this.http.get<ServerResponseModel>(this.tempUrlString, {headers: {'X-Auth-Token': '168c87a5b0ba45239ceee596952d3d6c'}}).pipe(
+    return this.http.get<ServerResponseModel>(this.BASE_URL, {headers: this.headers}).pipe(
       map((serverResponseModel: ServerResponseModel) => {
 
-        if (serverResponseModel === undefined){
-          alert('Empty response returned from the server!');
+        if (!serverResponseModel) {
+          console.error('Empty response returned from the server!');
           return [];
         }
 

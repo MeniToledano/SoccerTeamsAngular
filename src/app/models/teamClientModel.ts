@@ -6,16 +6,19 @@ export class TeamClientModel {
   crestUrl: string;
   founded: number;
 
-  static plainToClass(teamJson: TeamModel): TeamClientModel{
+  static plainToClass(teamJson: TeamModel): TeamClientModel {
     const team = new TeamClientModel();
-    team.crestUrl = teamJson.crestUrl;
-    team.founded = teamJson.founded;
-    team.id = teamJson.id;
-    team.name = teamJson.name;
+    team.crestUrl = teamJson?.crestUrl;
+    team.founded = teamJson?.founded;
+    team.id = teamJson?.id;
+    team.name = teamJson?.name;
     return team;
   }
 
-  static arrPlainToClass(teamsJson: TeamModel[]): TeamClientModel[]{
+  static arrPlainToClass(teamsJson: TeamModel[]): TeamClientModel[] {
+    if (!teamsJson) {
+      return [];
+    }
     return teamsJson.map(team => (TeamClientModel.plainToClass(team)));
   }
 }

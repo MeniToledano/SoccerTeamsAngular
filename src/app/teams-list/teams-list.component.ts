@@ -9,20 +9,20 @@ import {StorageManagerService} from "../storage-manager.service";
   templateUrl: './teams-list.component.html',
   styleUrls: ['./teams-list.component.css']
 })
-export class TeamsListComponent implements OnInit,OnDestroy {
+export class TeamsListComponent implements OnInit, OnDestroy {
 
   subscription: Subscription[] = [];
   teamsData: TeamClientModel[];
   viewTeams: TeamClientModel[];
-  isFavorite: number[] = [];
-  KEY:string = 'favoriteTeams';
+  isFav: { [key: number]: boolean };
+  KEY: string = 'favoriteTeams';
   viewNum: number = 0;
   numberOfTeamsInView: number = 10;
   currentPage: number = 0;
   numberOfPages: number;
 
   constructor(private httpReqService: HttpRequestsService,
-              private  storageManagerService: StorageManagerService) {
+              private storageManagerService: StorageManagerService) {
   }
 
   ngOnInit(): void {
@@ -33,13 +33,13 @@ export class TeamsListComponent implements OnInit,OnDestroy {
         console.log(this.teamsData);
       },
       (error) => {
-        alert('Error: Cant retrieve teams data!');
-        console.log(error);
+        console.error(error);
       }
     );
 
     // init favorite teams from local storage
-    this.storageManagerService.onInit(this.KEY).split(',').map(num => this.isFavorite.push(Number(num)));
+    const dataString = this.storageManagerService.onInit(this.KEY, '{}');
+    this.isFav = JSON.parse(dataString);
 
     // add all subscription to the sub[] in order to release them on destroying the component
     this.subscription.push(sub1);
@@ -47,8 +47,8 @@ export class TeamsListComponent implements OnInit,OnDestroy {
 
   private initView(): void {
     // init view
-    this.viewTeams = this.teamsData.slice(this.viewNum * 10 , this.viewNum * 10 + this.numberOfTeamsInView);
-    this.numberOfPages = this.teamsData.length / this.numberOfTeamsInView ;
+    this.viewTeams = this.teamsData.slice(this.viewNum * 10, this.viewNum * 10 + this.numberOfTeamsInView);
+    this.numberOfPages = this.teamsData.length / this.numberOfTeamsInView;
   }
 
   ngOnDestroy(): void {
@@ -56,22 +56,13 @@ export class TeamsListComponent implements OnInit,OnDestroy {
     this.subscription.forEach((subscription) => subscription.unsubscribe());
   }
 
-  onClickTeam(teamId: number): void {
-    // make team favorite / not favorite
-    console.log(this.isFavorite.indexOf(teamId));
-    if ( this.isFavorite.indexOf(teamId) > -1){
-      this.isFavorite.splice(this.isFavorite.indexOf(teamId), 1);
-    }else{
-      this.isFavorite.push(teamId)
-    }
-
-    // update local storage
-    this.storageManagerService.setData(this.KEY, this.isFavorite.toString());
-  }
-
   updateTable(pageNumber: number): void {
     this.currentPage = pageNumber;
-    this.viewTeams = this.teamsData.slice(this.currentPage * 10 , this.currentPage * 10 + this.numberOfTeamsInView);
+    this.viewTeams = this.teamsData.slice(this.currentPage * 10, this.currentPage * 10 + this.numberOfTeamsInView);
+  }
 
+  updateFavorites(teamId: number): void {
+    this.isFav[teamId] = !this.isFav[teamId];
+    this.storageManagerService.setData(this.KEY, JSON.stringify(this.isFav));
   }
 }
