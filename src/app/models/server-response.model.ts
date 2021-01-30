@@ -3,6 +3,7 @@ export interface ServerResponseModel {
   filters: {};
   teams: TeamModel[];
 }
+
 export interface TeamModel {
   id: number;
   crestUrl: string;

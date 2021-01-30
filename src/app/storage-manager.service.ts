@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ export class StorageManagerService {
 
   }
 
-  onInit(key :string, value: string): string {
+  onInit(key: string, value: string): string {
     if (window.localStorage) {
       if (localStorage.length > 0) {
         if (localStorage.getItem(key))

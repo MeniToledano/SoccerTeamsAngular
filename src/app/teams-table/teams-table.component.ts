@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {TeamClientModel} from "../models/teamClientModel";
-import {StorageManagerService} from "../storage-manager.service";
 
 @Component({
   selector: 'app-teams-table',
@@ -16,7 +15,8 @@ export class TeamsTableComponent implements OnInit {
   @Input() viewTeams: TeamClientModel[];
   @Output() onUpdateFavorite: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

@@ -1,10 +1,10 @@
 <app-loader *ngIf="!viewTeams"></app-loader>
 <div *ngIf="viewTeams" class="container">
   <app-teams-table
+    (onUpdateFavorite)=updateFavorites($event)
     [currentPage]=currentPage
     [isFavorite]=isFav
     [viewTeams]=viewTeams
-    (onUpdateFavorite) = updateFavorites($event)
   ></app-teams-table>
   <app-pagination
     (onChangePage)="updateTable($event)"

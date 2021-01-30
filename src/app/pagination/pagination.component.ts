@@ -8,8 +8,10 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 export class PaginationComponent implements OnInit {
   @Input() numberOfPages: number;
   @Output() onChangePage: EventEmitter<number> = new EventEmitter<number>();
-  currentPageNumber:number = 0;
-  constructor() { }
+  currentPageNumber: number = 0;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
@@ -24,18 +26,20 @@ export class PaginationComponent implements OnInit {
   }
 
   onClickPrev(): void {
-    if (this.currentPageNumber > 0){
+    if (this.currentPageNumber > 0) {
       this.currentPageNumber -= 1;
       this.updatePageNumber();
     }
   }
+
   onClickNext(): void {
-    if (this.currentPageNumber < this.numberOfPages -1){
+    if (this.currentPageNumber < this.numberOfPages - 1) {
       this.currentPageNumber += 1;
       this.updatePageNumber();
     }
   }
-  updatePageNumber(): void{
+
+  updatePageNumber(): void {
     this.onChangePage.emit(this.currentPageNumber);
   }
 }

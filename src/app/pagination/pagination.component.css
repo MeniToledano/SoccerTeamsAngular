@@ -1,7 +1,8 @@
-.page-link{
+.page-link {
   color: blanchedalmond;
   background-color: #212529;
 }
+
 .page-link:hover {
   background-color: gray;
 }

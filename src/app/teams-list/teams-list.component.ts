@@ -45,12 +45,6 @@ export class TeamsListComponent implements OnInit, OnDestroy {
     this.subscription.push(sub1);
   }
 
-  private initView(): void {
-    // init view
-    this.viewTeams = this.teamsData.slice(this.viewNum * 10, this.viewNum * 10 + this.numberOfTeamsInView);
-    this.numberOfPages = this.teamsData.length / this.numberOfTeamsInView;
-  }
-
   ngOnDestroy(): void {
     // release all subscriptions
     this.subscription.forEach((subscription) => subscription.unsubscribe());
@@ -64,5 +58,11 @@ export class TeamsListComponent implements OnInit, OnDestroy {
   updateFavorites(teamId: number): void {
     this.isFav[teamId] = !this.isFav[teamId];
     this.storageManagerService.setData(this.KEY, JSON.stringify(this.isFav));
+  }
+
+  private initView(): void {
+    // init view
+    this.viewTeams = this.teamsData.slice(this.viewNum * 10, this.viewNum * 10 + this.numberOfTeamsInView);
+    this.numberOfPages = this.teamsData.length / this.numberOfTeamsInView;
   }
 }
