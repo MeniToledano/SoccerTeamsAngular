@@ -1,20 +1,11 @@
-
-.header {
+.header{
   overflow: hidden;
-  background-color: transparent;
-  padding: 10px;
-  width: 100%;
-}
-
-.header a {
   float: left;
   color: blanchedalmond;
-  text-align: center;
-  padding: 12px;
-  text-decoration: none;
+  text-align: left;
+  padding: 20px;
+  width: 100%;
   font-size: 25px;
-  line-height: 25px;
-  border-radius: 4px;
+  margin: 0;
 }
-
 
