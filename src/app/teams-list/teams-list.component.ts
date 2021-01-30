@@ -56,7 +56,6 @@ export class TeamsListComponent implements OnInit,OnDestroy {
     this.subscription.forEach((subscription) => subscription.unsubscribe());
   }
 
-
   onClickTeam(teamId: number): void {
     // make team favorite / not favorite
     console.log(this.isFavorite.indexOf(teamId));
@@ -66,31 +65,13 @@ export class TeamsListComponent implements OnInit,OnDestroy {
       this.isFavorite.push(teamId)
     }
 
-
     // update local storage
     this.storageManagerService.setData(this.KEY, this.isFavorite.toString());
   }
-  arrayPages(): any[] {
-    return Array(this.numberOfPages);
-  }
 
-  onClickPageNumber(pageNumber: number): void {
+  updateTable(pageNumber: number): void {
     this.currentPage = pageNumber;
-    this.viewTeams = this.teamsData.slice( this.currentPage * 10 ,  this.currentPage * 10 + this.numberOfTeamsInView);
+    this.viewTeams = this.teamsData.slice(this.currentPage * 10 , this.currentPage * 10 + this.numberOfTeamsInView);
 
-
-  }
-
-  onClickPrev(): void {
-    if (this.currentPage > 0){
-      this.currentPage -= 1;
-      this.viewTeams = this.teamsData.slice(this.currentPage * 10 , this.currentPage * 10 + this.numberOfTeamsInView);
-    }
-  }
-  onClickNext(): void {
-    if (this.currentPage < this.numberOfPages -1){
-      this.currentPage += 1;
-      this.viewTeams = this.teamsData.slice(this.currentPage * 10 , this.currentPage * 10 + this.numberOfTeamsInView);
-    }
   }
 }

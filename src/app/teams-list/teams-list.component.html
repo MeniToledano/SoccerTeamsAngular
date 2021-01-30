@@ -6,7 +6,7 @@
 </div>
 
 <!-- Table section-->
-<div *ngIf="teamsData" class="container" >
+<div *ngIf="teamsData" class="container">
   <table class="table table-hover table-dark" id="table">
     <thead>
     <tr>
@@ -32,22 +32,11 @@
     </tbody>
   </table>
 
-<!--  Page Number Section-->
+  <!--  Page Number Section-->
   <div *ngIf="numberOfPages">
-    <nav aria-label="Page navigation example">
-      <ul class="pagination justify-content-center">
-        <li class="page-item">
-          <a (click)="onClickPrev()" class="page-link">Previous</a>
-        </li>
-        <li *ngFor="let item  of arrayPages(); let j = index;"
-            class="page-item">
-          <a (click)="onClickPageNumber(j)"
-             class="page-link">{{j + 1}}</a>
-        </li>
-        <li class="page-item">
-          <a (click)="onClickNext()" class="page-link">Next</a>
-        </li>
-      </ul>
-    </nav>
+    <app-nav-bar
+      (onChangePage)="updateTable($event)"
+      [numberOfPages]="numberOfPages"
+    ></app-nav-bar>
   </div>
 </div>

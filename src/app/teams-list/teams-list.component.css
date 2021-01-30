@@ -1,6 +1,5 @@
 .image{
-  height: 10%;
-  width: 10%;
+  max-width: 5%;
 }
 
 #loader{
@@ -12,10 +11,10 @@
 #table{
   opacity: 0.8;
 }
-nav ul li a{
-  color: blanchedalmond;
-  background-color: #212529;
-}
-nav ul li a:hover {
-  background-color: gray;
-}
+/*nav ul li a{*/
+/*  color: blanchedalmond;*/
+/*  background-color: #212529;*/
+/*}*/
+/*nav ul li a:hover {*/
+/*  background-color: gray;*/
+/*}*/

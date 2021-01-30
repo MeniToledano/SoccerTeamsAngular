@@ -8,11 +8,13 @@ import { HttpClientModule} from "@angular/common/http";
 import { TeamsListComponent } from './teams-list/teams-list.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import {StorageManagerService} from "./storage-manager.service";
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TeamsListComponent
+    TeamsListComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
