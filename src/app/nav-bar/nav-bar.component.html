@@ -1,0 +1,15 @@
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a (click)="onClickPrev()" class="page-link">Previous</a>
+    </li>
+    <li *ngFor="let item  of arrayPages(); let j = index;"
+        class="page-item">
+      <a (click)="onClickPageNumber(j)"
+         class="page-link">{{j + 1}}</a>
+    </li>
+    <li class="page-item">
+      <a (click)="onClickNext()" class="page-link">Next</a>
+    </li>
+  </ul>
+</nav>

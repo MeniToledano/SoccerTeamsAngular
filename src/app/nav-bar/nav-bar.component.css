@@ -1,0 +1,7 @@
+nav ul li a{
+  color: blanchedalmond;
+  background-color: #212529;
+}
+nav ul li a:hover {
+  background-color: gray;
+}
