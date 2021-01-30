@@ -1,0 +1,10 @@
+{
+  "/": {
+    "target": "https://crests.football-data.org/",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/": ""
+    }
+  }
+}

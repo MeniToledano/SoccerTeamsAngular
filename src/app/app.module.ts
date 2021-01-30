@@ -3,16 +3,25 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {HttpRequestsService} from "./http-requests.service";
+import { HttpClientModule} from "@angular/common/http";
+import { TeamsListComponent } from './teams-list/teams-list.component';
+import { AngularSvgIconModule } from 'angular-svg-icon';
+import {StorageManagerService} from "./storage-manager.service";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TeamsListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    AngularSvgIconModule.forRoot()
   ],
-  providers: [],
+  providers: [ HttpRequestsService,
+    StorageManagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
