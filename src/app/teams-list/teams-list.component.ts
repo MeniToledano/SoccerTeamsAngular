@@ -14,7 +14,7 @@ export class TeamsListComponent implements OnInit, OnDestroy {
   subscription: Subscription[] = [];
   teamsData: TeamClientModel[];
   viewTeams: TeamClientModel[];
-  isFav: { [key: number]: boolean };
+  isFav: { [key: number]: boolean } = {};
   KEY: string = 'favoriteTeams';
   viewNum: number = 0;
   numberOfTeamsInView: number = 10;
