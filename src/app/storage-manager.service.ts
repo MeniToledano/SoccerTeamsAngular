@@ -29,7 +29,7 @@ export class StorageManagerService {
           this.setData(key, value);
       }
     }
-    return '';
+    return '{}';
   }
 }
 
